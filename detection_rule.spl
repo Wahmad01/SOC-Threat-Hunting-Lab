@@ -1,0 +1,1 @@
+index=main "4625" "vboxuser" | stats count by host | where count > 3
