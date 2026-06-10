@@ -51,11 +51,25 @@ auditpol /set /category:"Logon/Logoff" /success:enable /failure:enable
 To map custom security channels directly to the central logging infrastructure, targeted configuration matrices were declared within the local forwarder system parameters:
 
 ```ini
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+disabled = 0
+index = sysmon
+renderXml = true
+
+[WinEventLog://OpenSSH/Operational]
+disabled = 0
+index = main
+renderXml = true
+
 [WinEventLog://Security]
 disabled = 0
 index = main
 renderXml = true
 
+[WinEventLog://Microsoft-Windows-Security-Auditing/Authentication]
+disabled = 0
+index = main
+renderXml = true
 ```
 
 ### 3. Core Registry Protection Bypass (Bypassing Remote Restrictions)
